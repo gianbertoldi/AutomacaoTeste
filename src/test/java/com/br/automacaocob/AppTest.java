@@ -17,7 +17,7 @@ public class AppTest {
 
 	@BeforeClass
 	public static void setup() {
-		System.setProperty("webdriver.chrome.driver", "D:/User/Beatriz/Desktop/AutomacaoTeste/driver/chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver", "./driver/chromedriver.exe");
 		driver = new ChromeDriver();
 		driver.manage().window().maximize();
 	}
@@ -56,6 +56,8 @@ public class AppTest {
 		Assert.assertEquals(nomeEmpresa.contains("COB - Comitê Olimpico Brasileiro"), true);
 		
 	}
+	
+	
 	@AfterClass
 	public static void finaliza() throws InterruptedException{
 		Thread.sleep(3000);
