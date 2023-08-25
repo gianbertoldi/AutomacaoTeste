@@ -1,6 +1,7 @@
 package com.br.automacaocob;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
@@ -53,11 +54,21 @@ public class AppTest {
 	public void validarNomeEmpresa() {
 		driver.get("https://tst.contatoseguro.io/pt/cob");
 		String nomeEmpresa = driver.findElement(By.xpath("/html/body/main/header/div/div/div/div[1]/h2")).getText();
-		Assert.assertEquals(nomeEmpresa.contains("COB - Comitê Olimpico Brasileiro"), true);
-		
+		Assert.assertEquals(nomeEmpresa.contains("COB - Comitê Olimpico Brasileiro"), true);		
 	}
 	
-	
+	@Test
+	public void validarErrosDePortugues() {
+		driver.get("https://tst.contatoseguro.io/pt/cob");
+		String textoCorrigido1 = "FAÇA SUA DENÚNICA";
+		String textoCorrigido2 = "O Canal de Ética é uma forma de ampliar nosso comprometimento com a transparência e a ética. Essa ferramenta independente, sigilosa e imparcial está disponível para os públicos externo e interno da { hotsite.name }.\r\n"
+				+ "\r\n"
+				+ "Você está em um ambiente seguro e sigiloso, hospedado fora do Sistema (ou ambiente) COB, e administrado pela Contato Seguro.";
+		String textoDenuncia = driver.findElement(By.xpath("/html/body/main/div[1]/div/div[1]/div/div/div[2]/a/button")).getText();
+		String textoSobreCanal = driver.findElement(By.xpath("/html/body/main/div[3]/div[2]/div/div/p")).getText();
+		Assert.assertEquals(textoCorrigido1, textoDenuncia);
+		Assert.assertEquals(textoCorrigido2, textoSobreCanal);
+	}
 	@AfterClass
 	public static void finaliza() throws InterruptedException{
 		Thread.sleep(3000);
