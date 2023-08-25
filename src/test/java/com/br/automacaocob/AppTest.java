@@ -21,7 +21,7 @@ public class AppTest {
 		driver = new ChromeDriver();
 		driver.manage().window().maximize();
 	}
-	/*@Test
+	@Test
 	public void validarUrl() {
 		driver.get("https://tst.contatoseguro.io/pt/cob");
 		String URL = driver.getCurrentUrl();
@@ -35,7 +35,7 @@ public class AppTest {
 		String textoTelefone = driver.findElement(By.xpath("/html/body/main/div[4]/div[2]/div/div")).getText();
 		Assert.assertEquals(telefone, "tel:0800 343 7231");
 		Assert.assertEquals(textoTelefone.contains("0800 343 7231"), true);
-	}*/
+	}
 	
 	@Test
 	public void validarIdioma() {
