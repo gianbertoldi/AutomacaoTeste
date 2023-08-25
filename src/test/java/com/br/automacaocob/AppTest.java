@@ -48,6 +48,13 @@ public class AppTest {
 		Assert.assertEquals(idiomaEspanhol, "Espanhol");
 		Assert.assertEquals(idiomaPortugues, "Português");
 	}
+	
+	@Test
+	public void validarNomeEmpresa() {
+		driver.get("https://tst.contatoseguro.io/pt/cob");
+		String nomeEmpresa = driver.findElement(By.xpath("/html/body/main/header/div/div/div/div[1]/h2")).getText();
+		Assert.assertEquals(nomeEmpresa.contains("COB - Comitê Olimpico Brasileiro"), true);
+	}
 	@AfterClass
 	public static void finaliza() throws InterruptedException{
 		Thread.sleep(3000);
