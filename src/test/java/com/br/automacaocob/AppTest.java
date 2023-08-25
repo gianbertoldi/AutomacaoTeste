@@ -54,6 +54,7 @@ public class AppTest {
 		driver.get("https://tst.contatoseguro.io/pt/cob");
 		String nomeEmpresa = driver.findElement(By.xpath("/html/body/main/header/div/div/div/div[1]/h2")).getText();
 		Assert.assertEquals(nomeEmpresa.contains("COB - Comitê Olimpico Brasileiro"), true);
+		
 	}
 	@AfterClass
 	public static void finaliza() throws InterruptedException{
