@@ -13,7 +13,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import junit.framework.Assert;
 
-public class AppTest {
+public class HomePageTest {
 	static WebDriver driver;
 
 	@BeforeClass
@@ -69,6 +69,34 @@ public class AppTest {
 		Assert.assertEquals(textoCorrigido1, textoDenuncia);
 		Assert.assertEquals(textoCorrigido2, textoSobreCanal);
 	}
+	
+	@Test
+	public void validarExistenciaFormulariosDenuncia() {
+		driver.get("https://tst.contatoseguro.io/pt/cob");
+		WebElement button = driver.findElement(By.xpath("/html/body/main/div[1]/div/div[1]/div/div/div[2]/a/button"));
+		button.click();
+		String URL = driver.getCurrentUrl();
+		Assert.assertEquals(URL, "https://tst.contatoseguro.io/pt/cob/relato/denuncia");
+	}
+	
+	@Test
+	public void validarExistenciaFormulariosSugestao() {
+		driver.get("https://tst.contatoseguro.io/pt/cob");
+		WebElement button = driver.findElement(By.xpath("/html/body/main/div[1]/div/div[2]/div/div/div[2]/a/button"));
+		button.click();
+		String URL = driver.getCurrentUrl();
+		Assert.assertEquals(URL, "https://tst.contatoseguro.io/pt/cob/relato/sugestaoc");
+	}
+	@Test
+	public void validarExistenciaFormulariosDuvida() {
+		driver.get("https://tst.contatoseguro.io/pt/cob");
+		WebElement button = driver.findElement(By.xpath("/html/body/main/div[1]/div/div[3]/div/div/div[2]/a/button"));
+		button.click();
+		String URL = driver.getCurrentUrl();
+		Assert.assertEquals(URL, "https://tst.contatoseguro.io/pt/cob/relato/duvidas");
+	}
+		
+		
 	@AfterClass
 	public static void finaliza() throws InterruptedException{
 		Thread.sleep(3000);
